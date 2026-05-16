@@ -149,10 +149,52 @@ void main() {
       final sera = ShadcnThemeData.light(style: ShadcnStyleName.sera);
 
       expect(_buttonHeight(nova), 32);
+      expect(_buttonFixedHeight(nova), 32);
       expect(_buttonHeight(vega), 36);
+      expect(_buttonFixedHeight(vega), 36);
       expect(_buttonText(sera).fontWeight, FontWeight.w600);
       expect(_buttonText(sera).letterSpacing, 1.6);
       expect(sera.textTheme.bodyMedium?.height, closeTo(24 / 14, 0.001));
+    });
+
+    test('maps component size tokens into Material component themes', () {
+      final mira = ShadcnThemeData.light(style: ShadcnStyleName.mira);
+      final maia = ShadcnThemeData.light(style: ShadcnStyleName.maia);
+      final sera = ShadcnThemeData.light(style: ShadcnStyleName.sera);
+
+      expect(_buttonHeight(mira), 28);
+      expect(_buttonFixedHeight(mira), 28);
+      expect(mira.inputDecorationTheme.constraints?.minHeight, 28);
+      expect(maia.inputDecorationTheme.constraints?.minHeight, 36);
+      expect(sera.inputDecorationTheme.constraints?.minHeight, 40);
+    });
+
+    test('maps component color and shape tokens into Material themes', () {
+      final data = ShadcnThemeData.dark(
+        theme: ShadcnThemeName.red,
+        style: ShadcnStyleName.luma,
+      );
+      final extension = data.extension<ShadcnThemeExtension>()!;
+      final cardShape = data.cardTheme.shape! as RoundedRectangleBorder;
+      final dialogShape = data.dialogTheme.shape! as RoundedRectangleBorder;
+
+      expect(cardShape.side.color, extension.colors.border);
+      expect(cardShape.side.width, extension.style.borderWidth);
+      expect(
+        cardShape.borderRadius,
+        BorderRadius.circular(extension.style.cardRadius),
+      );
+      expect(dialogShape.side.color, extension.colors.border);
+      expect(
+        dialogShape.borderRadius,
+        BorderRadius.circular(extension.style.dialogRadius),
+      );
+      expect(data.sliderTheme.activeTrackColor, extension.colors.primary);
+      expect(
+        data.switchTheme.trackColor?.resolve({WidgetState.selected}),
+        extension.colors.primary,
+      );
+      expect(data.progressIndicatorTheme.color, extension.colors.primary);
     });
 
     test(
@@ -198,6 +240,10 @@ void main() {
 
 double _buttonHeight(ThemeData data) {
   return data.filledButtonTheme.style!.minimumSize!.resolve({})!.height;
+}
+
+double _buttonFixedHeight(ThemeData data) {
+  return data.filledButtonTheme.style!.fixedSize!.resolve({})!.height;
 }
 
 TextStyle _buttonText(ThemeData data) {

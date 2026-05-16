@@ -383,6 +383,7 @@ abstract final class ShadcnThemeData {
         horizontal: style.inputPaddingX,
         vertical: style.inputPaddingY,
       ),
+      constraints: BoxConstraints(minHeight: style.inputHeight),
       border: baseBorder,
       enabledBorder: baseBorder,
       disabledBorder: baseBorder.copyWith(
@@ -421,6 +422,7 @@ abstract final class ShadcnThemeData {
       shadowColor: WidgetStatePropertyAll(_withAlpha(colors.foreground, 0.10)),
       surfaceTintColor: const WidgetStatePropertyAll(Colors.transparent),
       minimumSize: WidgetStatePropertyAll(Size(0, style.buttonHeight)),
+      fixedSize: WidgetStatePropertyAll(Size.fromHeight(style.buttonHeight)),
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       padding: WidgetStatePropertyAll(
         EdgeInsets.symmetric(horizontal: style.buttonPaddingX),

@@ -1,3 +1,9 @@
+## 0.0.5
+
+- Mapped control height tokens into button fixed sizes and input constraints.
+- Added component theme regression coverage for button sizing, input sizing,
+  shape radii, borders, switches, sliders, and progress indicators.
+
 ## 0.0.4
 
 - Added `ShadcnControlSize` and style token helpers for button, icon button,
