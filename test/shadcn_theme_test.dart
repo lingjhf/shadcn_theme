@@ -41,6 +41,22 @@ void main() {
       }
     });
 
+    test('all color token maps expose the complete semantic contract', () {
+      expect(
+        ShadcnColorTokens.semanticTokenNames,
+        hasLength(ShadcnColorTokens.semanticTokenCount),
+      );
+      for (final theme in ShadcnThemes.values) {
+        for (final colors in [theme.light, theme.dark]) {
+          final map = colors.toMap();
+
+          expect(map, hasLength(ShadcnColorTokens.semanticTokenCount));
+          expect(map.keys.toSet(), ShadcnColorTokens.semanticTokenNames);
+          expect(map.values, everyElement(isA<Color>()));
+        }
+      }
+    });
+
     test('representative official token values are stable', () {
       expect(
         ShadcnThemeName.neutral.tokens.light.primary,

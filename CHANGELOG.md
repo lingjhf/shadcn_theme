@@ -1,3 +1,12 @@
+## 0.0.7
+
+- Added the public `ShadcnColorTokens.semanticTokenNames` and
+  `semanticTokenCount` contract for generated color maps.
+- Added token generation documentation covering upstream source data, accent
+  theme merging, style token scope, and validation rules.
+- Added unit coverage to verify every light and dark theme exposes all 31
+  semantic color tokens.
+
 ## 0.0.6
 
 - Added `ShadcnThemeData.resolve` for brightness-driven theme construction.
