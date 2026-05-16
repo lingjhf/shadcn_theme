@@ -213,6 +213,65 @@ void main() {
       expect(data.progressIndicatorTheme.color, extension.colors.primary);
     });
 
+    test('maps extended Material component themes from shadcn tokens', () {
+      final data = ShadcnThemeData.dark(
+        theme: ShadcnThemeName.violet,
+        style: ShadcnStyleName.maia,
+      );
+      final extension = data.shadcnTheme;
+
+      expect(data.textSelectionTheme.cursorColor, extension.colors.ring);
+      expect(
+        data.textSelectionTheme.selectionHandleColor,
+        extension.colors.primary,
+      );
+      expect(
+        data.dropdownMenuTheme.textStyle?.color,
+        extension.colors.foreground,
+      );
+      expect(
+        data.dropdownMenuTheme.textStyle?.fontSize,
+        data.textTheme.bodyMedium?.fontSize,
+      );
+      expect(
+        data.dropdownMenuTheme.inputDecorationTheme?.constraints?.minHeight,
+        extension.style.inputHeight,
+      );
+      expect(
+        data.dropdownMenuTheme.menuStyle?.backgroundColor?.resolve({}),
+        extension.colors.popover,
+      );
+      expect(
+        data.floatingActionButtonTheme.backgroundColor,
+        extension.colors.primary,
+      );
+      expect(
+        data.floatingActionButtonTheme.foregroundColor,
+        extension.colors.primaryForeground,
+      );
+      expect(
+        data.navigationBarTheme.backgroundColor,
+        extension.colors.background,
+      );
+      expect(data.navigationBarTheme.indicatorColor, extension.colors.accent);
+      expect(
+        data.navigationBarTheme.iconTheme?.resolve({
+          WidgetState.selected,
+        })?.color,
+        extension.colors.primary,
+      );
+      expect(
+        data.navigationBarTheme.iconTheme?.resolve({})?.color,
+        extension.colors.mutedForeground,
+      );
+      expect(data.snackBarTheme.behavior, SnackBarBehavior.floating);
+      expect(data.snackBarTheme.closeIconColor, extension.colors.background);
+      expect(
+        data.snackBarTheme.contentTextStyle?.color,
+        extension.colors.background,
+      );
+    });
+
     test(
       'radius override scales rounded styles and keeps sharp styles sharp',
       () {

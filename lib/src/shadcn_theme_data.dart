@@ -161,7 +161,13 @@ abstract final class ShadcnThemeData {
         thickness: styleTokens.borderWidth,
         space: styleTokens.spacingUnit,
       ),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: colors.ring,
+        selectionColor: _withAlpha(colors.primary, 0.24),
+        selectionHandleColor: colors.primary,
+      ),
       inputDecorationTheme: _inputDecoration(colors, styleTokens),
+      dropdownMenuTheme: _dropdownMenuTheme(colors, styleTokens, textTheme),
       filledButtonTheme: FilledButtonThemeData(
         style: _buttonStyle(
           colors: colors,
@@ -229,6 +235,12 @@ abstract final class ShadcnThemeData {
       radioTheme: _radioTheme(colors, styleTokens),
       switchTheme: _switchTheme(colors, styleTokens),
       sliderTheme: _sliderTheme(colors, styleTokens),
+      floatingActionButtonTheme: _floatingActionButtonTheme(
+        colors,
+        styleTokens,
+        textTheme,
+      ),
+      navigationBarTheme: _navigationBarTheme(colors, styleTokens, textTheme),
       tabBarTheme: TabBarThemeData(
         labelColor: colors.foreground,
         unselectedLabelColor: colors.mutedForeground,
@@ -316,6 +328,7 @@ abstract final class ShadcnThemeData {
         linearTrackColor: colors.muted,
         circularTrackColor: colors.muted,
       ),
+      snackBarTheme: _snackBarTheme(colors, styleTokens, textTheme),
       extensions: [extension],
     );
   }
@@ -451,6 +464,113 @@ abstract final class ShadcnThemeData {
       side: side == null ? null : WidgetStatePropertyAll(side),
       iconSize: WidgetStatePropertyAll(style.iconSize),
       iconColor: _stateColor(foreground, colors.mutedForeground),
+    );
+  }
+
+  static DropdownMenuThemeData _dropdownMenuTheme(
+    ShadcnColorTokens colors,
+    ShadcnStyleTokens style,
+    TextTheme textTheme,
+  ) {
+    return DropdownMenuThemeData(
+      textStyle: textTheme.bodyMedium,
+      inputDecorationTheme: _inputDecoration(colors, style),
+      disabledColor: _withAlpha(colors.mutedForeground, 0.50),
+      menuStyle: MenuStyle(
+        backgroundColor: WidgetStatePropertyAll(colors.popover),
+        surfaceTintColor: const WidgetStatePropertyAll(Colors.transparent),
+        shadowColor: WidgetStatePropertyAll(
+          _withAlpha(colors.foreground, 0.10),
+        ),
+        elevation: WidgetStatePropertyAll(style.dialogElevation),
+        shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(style.dialogRadius),
+            side: BorderSide(color: colors.border, width: style.borderWidth),
+          ),
+        ),
+      ),
+    );
+  }
+
+  static FloatingActionButtonThemeData _floatingActionButtonTheme(
+    ShadcnColorTokens colors,
+    ShadcnStyleTokens style,
+    TextTheme textTheme,
+  ) {
+    return FloatingActionButtonThemeData(
+      foregroundColor: colors.primaryForeground,
+      backgroundColor: colors.primary,
+      focusColor: _withAlpha(colors.ring, style.focusRingOpacity),
+      hoverColor: _withAlpha(colors.accent, style.stateLayerOpacity),
+      splashColor: _withAlpha(colors.accent, style.stateLayerOpacity + 0.06),
+      elevation: style.cardElevation,
+      focusElevation: style.cardElevation + 1,
+      hoverElevation: style.cardElevation + 1,
+      highlightElevation: style.cardElevation + 2,
+      disabledElevation: 0,
+      iconSize: style.iconSize,
+      extendedIconLabelSpacing: style.buttonGap,
+      extendedPadding: EdgeInsets.symmetric(horizontal: style.buttonPaddingX),
+      extendedTextStyle: textTheme.labelLarge,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(style.buttonRadius),
+      ),
+    );
+  }
+
+  static NavigationBarThemeData _navigationBarTheme(
+    ShadcnColorTokens colors,
+    ShadcnStyleTokens style,
+    TextTheme textTheme,
+  ) {
+    return NavigationBarThemeData(
+      height: style.buttonHeightLg + style.cardPaddingSm * 2,
+      backgroundColor: colors.background,
+      elevation: 0,
+      shadowColor: _withAlpha(colors.foreground, 0.10),
+      surfaceTintColor: Colors.transparent,
+      indicatorColor: colors.accent,
+      indicatorShape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(style.buttonRadius),
+      ),
+      labelTextStyle: WidgetStateProperty.resolveWith((states) {
+        final color = states.contains(WidgetState.selected)
+            ? colors.foreground
+            : colors.mutedForeground;
+        return textTheme.labelMedium?.copyWith(color: color);
+      }),
+      iconTheme: WidgetStateProperty.resolveWith((states) {
+        final color = states.contains(WidgetState.selected)
+            ? colors.primary
+            : colors.mutedForeground;
+        return IconThemeData(color: color, size: style.iconSize);
+      }),
+      overlayColor: _overlayColor(colors.accent, style.stateLayerOpacity),
+      labelPadding: EdgeInsets.symmetric(horizontal: style.spacingUnit),
+    );
+  }
+
+  static SnackBarThemeData _snackBarTheme(
+    ShadcnColorTokens colors,
+    ShadcnStyleTokens style,
+    TextTheme textTheme,
+  ) {
+    return SnackBarThemeData(
+      backgroundColor: colors.foreground,
+      actionTextColor: colors.primary,
+      disabledActionTextColor: _withAlpha(colors.mutedForeground, 0.50),
+      contentTextStyle: textTheme.bodyMedium?.copyWith(
+        color: colors.background,
+      ),
+      elevation: style.dialogElevation,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(style.menuItemRadius),
+      ),
+      behavior: SnackBarBehavior.floating,
+      insetPadding: EdgeInsets.all(style.cardPaddingSm),
+      showCloseIcon: true,
+      closeIconColor: colors.background,
     );
   }
 

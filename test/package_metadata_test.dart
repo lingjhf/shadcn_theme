@@ -16,7 +16,7 @@ void main() {
       pubspec,
       contains('issue_tracker: https://github.com/lingjhf/shadcn_theme/issues'),
     );
-    expect(pubspec, contains('version: 0.1.1'));
+    expect(pubspec, contains('version: 0.1.2'));
     expect(pubspec, contains('topics:'));
     expect(pubspec, contains('  - flutter'));
     expect(pubspec, contains('  - shadcn'));

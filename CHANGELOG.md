@@ -1,3 +1,10 @@
+## 0.1.2
+
+- Mapped shadcn tokens into additional Material themes for text selection,
+  dropdown menus, floating action buttons, navigation bars, and snack bars.
+- Added regression coverage for extended component color, size, and state
+  mappings.
+
 ## 0.1.1
 
 - Added public `ShadcnThemeNames` and `ShadcnStyleNames` lookup helpers for
