@@ -36,7 +36,21 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Install example dependencies
+        working-directory: example
+        run: flutter pub get
+
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed lib test example/lib
+
+      - name: Check whitespace
+        run: git diff --check
+
       - name: Analyze
+        run: dart analyze
+
+      - name: Analyze example
+        working-directory: example
         run: dart analyze
 
       - name: Run tests

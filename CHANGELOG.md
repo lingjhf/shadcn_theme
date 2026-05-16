@@ -1,3 +1,10 @@
+## 0.0.9
+
+- Hardened CI and publish workflows with formatting checks, whitespace checks,
+  and independent example analysis.
+- Added package metadata and GitHub Actions regression tests for the pub.dev
+  automated publishing path.
+
 ## 0.0.8
 
 - Added a runnable Flutter example app that switches shadcn color themes,
