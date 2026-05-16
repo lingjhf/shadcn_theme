@@ -101,6 +101,9 @@ Generated token maintenance rules are documented in
 The 0.1.x public API contract is documented in
 [`doc/api_contract.md`](doc/api_contract.md).
 
+Release validation is documented in
+[`doc/release_checklist.md`](doc/release_checklist.md).
+
 ## Scope
 
 This package intentionally does not implement shadcn widgets. Use Flutter,

@@ -16,6 +16,7 @@ void main() {
     expect(readme, contains('flutter test'));
     expect(readme, contains('doc/token_generation.md'));
     expect(readme, contains('doc/api_contract.md'));
+    expect(readme, contains('doc/release_checklist.md'));
   });
 
   test('example app is present for pub.dev and local smoke testing', () {

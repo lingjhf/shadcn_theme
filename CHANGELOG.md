@@ -1,3 +1,10 @@
+## 0.1.10
+
+- Added a release checklist documenting validation-only iterations and tag-based
+  publishing boundaries.
+- Added release regression tests to keep pubspec version, changelog, and release
+  checklist expectations aligned.
+
 ## 0.1.9
 
 - Added pub.dev documentation and platform metadata for all Flutter-supported
