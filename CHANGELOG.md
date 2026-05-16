@@ -1,3 +1,9 @@
+## 0.1.0
+
+- Documented the 0.1.x public API contract for production use.
+- Added public API regression tests covering theme factories, token registries,
+  `ThemeData` accessors, font overrides, and release validation docs.
+
 ## 0.0.10
 
 - Added pub.dev topics for Flutter, theming, shadcn, Material, and design

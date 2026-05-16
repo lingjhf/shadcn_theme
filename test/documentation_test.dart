@@ -11,6 +11,7 @@ void main() {
     expect(readme, contains('maybeShadcnTheme'));
     expect(readme, contains('example/'));
     expect(readme, contains('doc/token_generation.md'));
+    expect(readme, contains('doc/api_contract.md'));
   });
 
   test('example app is present for pub.dev and local smoke testing', () {

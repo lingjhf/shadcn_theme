@@ -87,6 +87,9 @@ same package API that applications consume.
 Generated token maintenance rules are documented in
 [`doc/token_generation.md`](doc/token_generation.md).
 
+The 0.1.x public API contract is documented in
+[`doc/api_contract.md`](doc/api_contract.md).
+
 ## Scope
 
 This package intentionally does not implement shadcn widgets. Use Flutter,
