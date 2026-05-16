@@ -165,6 +165,20 @@ class ShadcnColorTokens {
 
   List<Color> get charts => [chart1, chart2, chart3, chart4, chart5];
 
+  /// Return the color for a semantic token [name], or null when unknown.
+  Color? tryGet(String name) => toMap()[name];
+
+  /// Return the color for a semantic token [name].
+  ///
+  /// Throws [ArgumentError] when [name] is not in [semanticTokenNames].
+  Color get(String name) {
+    final color = tryGet(name);
+    if (color == null) {
+      throw ArgumentError.value(name, 'name', 'Unsupported shadcn color token');
+    }
+    return color;
+  }
+
   Map<String, Color> toMap() {
     return {
       'background': background,

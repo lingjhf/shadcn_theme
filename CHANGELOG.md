@@ -1,3 +1,10 @@
+## 0.1.4
+
+- Added `ShadcnColorTokens.tryGet` and `get` for safe lookup by semantic token
+  name.
+- Expanded color/source tests for token lookup, source metadata, base/accent
+  disjointness, and accent theme neutral-base merging.
+
 ## 0.1.3
 
 - Added semantic `EdgeInsets` helpers for button, input, card, dialog, and

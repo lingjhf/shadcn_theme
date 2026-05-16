@@ -53,9 +53,41 @@ void main() {
           expect(map, hasLength(ShadcnColorTokens.semanticTokenCount));
           expect(map.keys.toSet(), ShadcnColorTokens.semanticTokenNames);
           expect(map.values, everyElement(isA<Color>()));
+          for (final entry in map.entries) {
+            expect(colors.tryGet(entry.key), entry.value);
+            expect(colors.get(entry.key), entry.value);
+          }
+          expect(colors.tryGet('unknown'), isNull);
+          expect(() => colors.get('unknown'), throwsArgumentError);
         }
       }
     });
+
+    test(
+      'theme source metadata and classifications stay internally consistent',
+      () {
+        expect(ShadcnThemes.sourceUrl, startsWith('https://github.com/'));
+        expect(
+          ShadcnThemes.baseColorThemes.intersection(ShadcnThemes.accentThemes),
+          isEmpty,
+        );
+        expect({
+          ...ShadcnThemes.baseColorThemes,
+          ...ShadcnThemes.accentThemes,
+        }, ShadcnThemeName.values.toSet());
+        for (final theme in ShadcnThemes.baseColorThemes) {
+          expect(theme.tokens.light.background, isA<Color>());
+          expect(theme.isBaseColorTheme, isTrue);
+        }
+        for (final theme in ShadcnThemes.accentThemes) {
+          expect(
+            theme.tokens.light.background,
+            ShadcnThemes.defaultBaseTheme.tokens.light.background,
+          );
+          expect(theme.isAccentTheme, isTrue);
+        }
+      },
+    );
 
     test('representative official token values are stable', () {
       expect(
