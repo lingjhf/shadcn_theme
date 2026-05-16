@@ -48,6 +48,8 @@ void main() {
     final publish = File('.github/workflows/publish.yml').readAsStringSync();
 
     for (final workflow in [ci, publish]) {
+      expect(workflow, contains('actions/checkout@v5'));
+      expect(workflow, isNot(contains('actions/checkout@v4')));
       expect(workflow, contains('dart format --output=none'));
       expect(workflow, contains('example/test'));
       expect(workflow, contains('git diff --check'));
