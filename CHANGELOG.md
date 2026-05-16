@@ -1,3 +1,9 @@
+## 0.0.3
+
+- Added source metadata and base/accent theme classification helpers.
+- Expanded color token regression coverage across base themes, accent themes,
+  light/dark values, neutral-base merging, and alpha colors.
+
 ## 0.0.2
 
 - Added value semantics and debug strings for theme, color, radius, style,

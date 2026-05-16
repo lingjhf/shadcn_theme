@@ -14,6 +14,17 @@ void main() {
       expect(ShadcnStyles.all.length, 7);
     });
 
+    test('classifies base and accent color themes', () {
+      expect(ShadcnThemes.defaultBaseTheme, ShadcnThemeName.neutral);
+      expect(ShadcnThemes.baseColorThemes, hasLength(7));
+      expect(ShadcnThemes.accentThemes, hasLength(17));
+      expect(ShadcnThemes.sourceUrl, contains('registry/themes.ts'));
+      expect(ShadcnThemeName.stone.isBaseColorTheme, isTrue);
+      expect(ShadcnThemeName.taupe.isBaseColorTheme, isTrue);
+      expect(ShadcnThemeName.blue.isAccentTheme, isTrue);
+      expect(ShadcnThemeName.amber.isAccentTheme, isTrue);
+    });
+
     test('all themes include chart and sidebar tokens', () {
       for (final tokens in ShadcnThemes.values) {
         for (final colors in [tokens.light, tokens.dark]) {
@@ -46,6 +57,23 @@ void main() {
       expect(
         ShadcnThemeName.yellow.tokens.dark.primary,
         const Color(0xFFF0B100),
+      );
+      expect(
+        ShadcnThemeName.stone.tokens.light.foreground,
+        const Color(0xFF0C0A09),
+      );
+      expect(ShadcnThemeName.zinc.tokens.dark.input, const Color(0x26FFFFFF));
+      expect(
+        ShadcnThemeName.amber.tokens.light.chart2,
+        const Color(0xFFFE9A00),
+      );
+      expect(
+        ShadcnThemeName.blue.tokens.light.background,
+        ShadcnThemeName.neutral.tokens.light.background,
+      );
+      expect(
+        ShadcnThemeName.blue.tokens.dark.card,
+        ShadcnThemeName.neutral.tokens.dark.card,
       );
     });
 

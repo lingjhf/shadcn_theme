@@ -30,8 +30,24 @@ enum ShadcnThemeName {
 enum ShadcnStyleName { vega, nova, maia, lyra, mira, luma, sera }
 
 extension ShadcnThemeNameInfo on ShadcnThemeName {
+  static const Set<ShadcnThemeName> baseColorThemes = {
+    ShadcnThemeName.neutral,
+    ShadcnThemeName.stone,
+    ShadcnThemeName.zinc,
+    ShadcnThemeName.mauve,
+    ShadcnThemeName.olive,
+    ShadcnThemeName.mist,
+    ShadcnThemeName.taupe,
+  };
+
   /// Registry-safe theme id.
   String get id => name;
+
+  /// Whether this theme is one of shadcn's complete base color themes.
+  bool get isBaseColorTheme => baseColorThemes.contains(this);
+
+  /// Whether this theme is an accent theme pre-merged with the neutral base.
+  bool get isAccentTheme => !isBaseColorTheme;
 
   /// Human-readable label.
   String get label => switch (this) {

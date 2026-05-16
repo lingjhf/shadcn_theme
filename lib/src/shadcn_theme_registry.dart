@@ -9,6 +9,20 @@ import 'shadcn_theme_tokens.dart';
 
 /// Registry for official shadcn color themes.
 abstract final class ShadcnThemes {
+  static const String sourceUrl =
+      'https://github.com/shadcn-ui/ui/blob/main/apps/v4/registry/themes.ts';
+
+  static const ShadcnThemeName defaultBaseTheme = ShadcnThemeName.neutral;
+
+  static const Set<ShadcnThemeName> baseColorThemes =
+      ShadcnThemeNameInfo.baseColorThemes;
+
+  static Set<ShadcnThemeName> get accentThemes {
+    return ShadcnThemeName.values
+        .where((theme) => !baseColorThemes.contains(theme))
+        .toSet();
+  }
+
   static const Map<ShadcnThemeName, ShadcnThemeTokens> all = {
     ShadcnThemeName.neutral: ShadcnThemeTokens(
       name: ShadcnThemeName.neutral,
