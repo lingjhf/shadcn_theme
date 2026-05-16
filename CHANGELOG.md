@@ -1,3 +1,9 @@
+## 0.1.8
+
+- Hardened CI and release validation workflows to format `example/test` and run
+  the example widget test suite.
+- Expanded workflow regression tests to keep example test validation enabled.
+
 ## 0.1.7
 
 - Updated README and API contract docs for name parsing, color lookup, padding

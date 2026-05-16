@@ -16,7 +16,7 @@ void main() {
       pubspec,
       contains('issue_tracker: https://github.com/lingjhf/shadcn_theme/issues'),
     );
-    expect(pubspec, contains('version: 0.1.7'));
+    expect(pubspec, contains('version: 0.1.8'));
     expect(pubspec, contains('topics:'));
     expect(pubspec, contains('  - flutter'));
     expect(pubspec, contains('  - shadcn'));
@@ -29,6 +29,7 @@ void main() {
 
     for (final workflow in [ci, publish]) {
       expect(workflow, contains('dart format --output=none'));
+      expect(workflow, contains('example/test'));
       expect(workflow, contains('git diff --check'));
       expect(
         workflow,
@@ -36,6 +37,7 @@ void main() {
       );
       expect(workflow, contains('flutter pub publish --dry-run'));
       expect(workflow, contains('working-directory: example'));
+      expect(workflow, contains('Run example tests'));
     }
     expect(publish, contains('id-token: write'));
     expect(publish, contains('flutter pub publish --force'));
