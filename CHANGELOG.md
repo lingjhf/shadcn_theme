@@ -1,3 +1,10 @@
+## 0.1.9
+
+- Added pub.dev documentation and platform metadata for all Flutter-supported
+  targets.
+- Cleaned template comments from `pubspec.yaml` and expanded package metadata
+  regression coverage.
+
 ## 0.1.8
 
 - Hardened CI and release validation workflows to format `example/test` and run

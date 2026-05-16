@@ -16,11 +16,31 @@ void main() {
       pubspec,
       contains('issue_tracker: https://github.com/lingjhf/shadcn_theme/issues'),
     );
-    expect(pubspec, contains('version: 0.1.8'));
+    expect(pubspec, contains('version: 0.1.9'));
     expect(pubspec, contains('topics:'));
     expect(pubspec, contains('  - flutter'));
     expect(pubspec, contains('  - shadcn'));
     expect(pubspec, contains('  - design-system'));
+    expect(
+      pubspec,
+      contains(
+        'documentation: https://github.com/lingjhf/shadcn_theme/tree/master/doc',
+      ),
+    );
+    for (final platform in [
+      'android',
+      'ios',
+      'linux',
+      'macos',
+      'web',
+      'windows',
+    ]) {
+      expect(pubspec, contains('  $platform:'));
+    }
+    expect(
+      pubspec,
+      isNot(contains('For information on the generic Dart part')),
+    );
   });
 
   test('github workflows validate and publish through pub.dev automation', () {
