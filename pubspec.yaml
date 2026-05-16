@@ -1,0 +1,23 @@
+name: shadcn_theme
+description: "Theme-only Flutter package for shadcn color themes and style presets."
+version: 0.0.1
+repository: https://github.com/lingjhf/shadcn_theme
+
+environment:
+  sdk: ^3.11.5
+  flutter: ">=3.35.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
