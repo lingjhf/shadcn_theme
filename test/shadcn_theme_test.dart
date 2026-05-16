@@ -218,11 +218,12 @@ void main() {
     );
 
     test('extension exposes active tokens', () {
-      final theme = ShadcnThemeData.dark(
+      final theme = ShadcnThemeData.resolve(
+        brightness: Brightness.dark,
         theme: ShadcnThemeName.emerald,
         style: ShadcnStyleName.mira,
       );
-      final extension = theme.extension<ShadcnThemeExtension>()!;
+      final extension = theme.shadcnTheme;
 
       expect(extension.theme.name, ShadcnThemeName.emerald);
       expect(extension.style.name, ShadcnStyleName.mira);
@@ -234,6 +235,45 @@ void main() {
         extension.colors.charts.first,
         ShadcnThemeName.emerald.tokens.dark.chart1,
       );
+    });
+
+    test('ThemeData accessors expose optional and required extensions', () {
+      final data = ShadcnThemeData.light(
+        theme: ShadcnThemeName.violet,
+        style: ShadcnStyleName.maia,
+      );
+
+      expect(data.maybeShadcnTheme, isNotNull);
+      expect(data.shadcnTheme, same(data.maybeShadcnTheme));
+      expect(data.shadcnTheme.theme.name, ShadcnThemeName.violet);
+      expect(data.shadcnTheme.style.name, ShadcnStyleName.maia);
+      expect(ThemeData.light().maybeShadcnTheme, isNull);
+      expect(() => ThemeData.light().shadcnTheme, throwsStateError);
+    });
+
+    test('theme extension copyWith and lerp keep token semantics', () {
+      final light = ShadcnThemeData.light(
+        theme: ShadcnThemeName.neutral,
+        style: ShadcnStyleName.nova,
+      ).shadcnTheme;
+      final dark = ShadcnThemeData.dark(
+        theme: ShadcnThemeName.orange,
+        style: ShadcnStyleName.sera,
+      ).shadcnTheme;
+
+      final copied = light.copyWith(style: ShadcnStyleName.sera.tokens);
+      final mixed = light.lerp(dark, 0.5);
+
+      expect(copied.theme, light.theme);
+      expect(copied.colors, light.colors);
+      expect(copied.style.name, ShadcnStyleName.sera);
+      expect(mixed.theme.name, ShadcnThemeName.orange);
+      expect(mixed.style.name, ShadcnStyleName.sera);
+      expect(
+        mixed.colors.primary,
+        Color.lerp(light.colors.primary, dark.colors.primary, 0.5),
+      );
+      expect(mixed.radius.base, 10);
     });
   });
 }

@@ -9,6 +9,22 @@ import 'shadcn_theme_tokens.dart';
 
 /// Factory for producing Flutter [ThemeData] from shadcn tokens.
 abstract final class ShadcnThemeData {
+  static ThemeData resolve({
+    required Brightness brightness,
+    ShadcnThemeName theme = ShadcnThemeName.neutral,
+    ShadcnStyleName style = ShadcnStyleName.nova,
+    double? radius,
+    String? fontFamily,
+  }) {
+    return _build(
+      brightness: brightness,
+      theme: theme,
+      style: style,
+      radius: radius,
+      fontFamily: fontFamily,
+    );
+  }
+
   static ThemeData light({
     ShadcnThemeName theme = ShadcnThemeName.neutral,
     ShadcnStyleName style = ShadcnStyleName.nova,

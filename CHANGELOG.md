@@ -1,3 +1,10 @@
+## 0.0.6
+
+- Added `ShadcnThemeData.resolve` for brightness-driven theme construction.
+- Added `ThemeData.shadcnTheme`, `ThemeData.maybeShadcnTheme`, and matching
+  `BuildContext` accessors for safer token reads.
+- Added unit coverage for extension access, copyWith, and interpolation.
+
 ## 0.0.5
 
 - Mapped control height tokens into button fixed sizes and input constraints.

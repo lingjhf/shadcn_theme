@@ -76,14 +76,27 @@ class ShadcnThemeExtension extends ThemeExtension<ShadcnThemeExtension> {
   }
 }
 
-extension ShadcnThemeContext on BuildContext {
-  /// Read the active shadcn theme extension from [ThemeData].
+extension ShadcnThemeDataAccess on ThemeData {
+  /// Read the active shadcn extension, or null for non-shadcn themes.
+  ShadcnThemeExtension? get maybeShadcnTheme =>
+      extension<ShadcnThemeExtension>();
+
+  /// Read the active shadcn theme extension.
   ShadcnThemeExtension get shadcnTheme {
-    final extension = Theme.of(this).extension<ShadcnThemeExtension>();
-    assert(
-      extension != null,
-      'No ShadcnThemeExtension found. Use ShadcnThemeData.light/dark.',
-    );
-    return extension!;
+    final extension = maybeShadcnTheme;
+    if (extension == null) {
+      throw StateError(
+        'No ShadcnThemeExtension found. Use ShadcnThemeData.light/dark.',
+      );
+    }
+    return extension;
   }
+}
+
+extension ShadcnThemeContext on BuildContext {
+  /// Read the active shadcn extension, or null for non-shadcn themes.
+  ShadcnThemeExtension? get maybeShadcnTheme => Theme.of(this).maybeShadcnTheme;
+
+  /// Read the active shadcn theme extension from [ThemeData].
+  ShadcnThemeExtension get shadcnTheme => Theme.of(this).shadcnTheme;
 }
