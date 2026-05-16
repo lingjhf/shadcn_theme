@@ -13,14 +13,15 @@ class ShadcnThemeExampleApp extends StatefulWidget {
 }
 
 class _ShadcnThemeExampleAppState extends State<ShadcnThemeExampleApp> {
-  ShadcnThemeName theme = ShadcnThemeName.zinc;
-  ShadcnStyleName style = ShadcnStyleName.nova;
+  ShadcnThemeName theme = ShadcnThemeNames.parse('zinc');
+  ShadcnStyleName style = ShadcnStyleNames.parse('nova');
   ThemeMode mode = ThemeMode.system;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'shadcn_theme example',
+      debugShowCheckedModeBanner: false,
       themeMode: mode,
       theme: ShadcnThemeData.light(theme: theme, style: style),
       darkTheme: ShadcnThemeData.dark(theme: theme, style: style),
@@ -48,7 +49,7 @@ class _ShadcnThemeExampleAppState extends State<ShadcnThemeExampleApp> {
               ],
             ),
             body: ListView(
-              padding: EdgeInsets.all(shadcn.style.cardPadding),
+              padding: shadcn.style.cardPaddingInsets,
               children: [
                 Wrap(
                   spacing: shadcn.style.spacingUnit * 2,
@@ -85,7 +86,7 @@ class _ShadcnThemeExampleAppState extends State<ShadcnThemeExampleApp> {
                 SizedBox(height: shadcn.style.cardGap),
                 Card(
                   child: Padding(
-                    padding: EdgeInsets.all(shadcn.style.cardPadding),
+                    padding: shadcn.style.cardPaddingInsets,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

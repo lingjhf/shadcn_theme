@@ -17,5 +17,6 @@ void main() {
   test('example app is present for pub.dev and local smoke testing', () {
     expect(File('example/pubspec.yaml').existsSync(), isTrue);
     expect(File('example/lib/main.dart').existsSync(), isTrue);
+    expect(File('example/test/example_app_test.dart').existsSync(), isTrue);
   });
 }

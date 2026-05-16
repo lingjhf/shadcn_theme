@@ -1,3 +1,10 @@
+## 0.1.6
+
+- Updated the example app to initialize themes from stable ids and reuse style
+  padding helpers.
+- Added an example widget smoke test for rendering controls and toggling
+  brightness.
+
 ## 0.1.5
 
 - Added active `brightness` and `fontFamily` context to
