@@ -2,6 +2,7 @@ name: shadcn_theme
 description: "Theme-only Flutter package for shadcn color themes and style presets."
 version: 0.0.1
 repository: https://github.com/lingjhf/shadcn_theme
+issue_tracker: https://github.com/lingjhf/shadcn_theme/issues
 
 environment:
   sdk: ^3.11.5
