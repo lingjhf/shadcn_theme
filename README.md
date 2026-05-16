@@ -13,6 +13,8 @@ and state layers.
 - 7 official shadcn style presets: Vega, Nova, Maia, Lyra, Mira, Luma, and Sera.
 - Light and dark `ThemeData` factories.
 - Complete token access for chart and sidebar colors.
+- `ThemeData` and `BuildContext` token accessors.
+- Example Flutter app under `example/`.
 - No runtime network requests and no npm dependency.
 
 Color values are generated from the official shadcn `apps/v4/registry/themes.ts`
@@ -55,6 +57,7 @@ Read tokens from the active theme:
 
 ```dart
 final shadcn = context.shadcnTheme;
+final optional = Theme.of(context).maybeShadcnTheme;
 final chartColors = shadcn.colors.charts;
 final sidebarBackground = shadcn.colors.sidebar;
 final cardPadding = shadcn.style.cardPadding;
@@ -66,6 +69,23 @@ Read tokens without a `BuildContext`:
 final tokens = ShadcnThemeName.blue.tokens.light;
 final styles = ShadcnStyleName.mira.tokens;
 ```
+
+## Example
+
+Run the bundled example app:
+
+```bash
+cd example
+flutter run
+```
+
+The example switches color themes, style presets, and brightness while using the
+same package API that applications consume.
+
+## Token Updates
+
+Generated token maintenance rules are documented in
+[`doc/token_generation.md`](doc/token_generation.md).
 
 ## Scope
 

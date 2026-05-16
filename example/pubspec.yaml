@@ -1,0 +1,13 @@
+name: shadcn_theme_example
+description: Example app for the shadcn_theme package.
+publish_to: none
+
+environment:
+  sdk: ^3.11.5
+  flutter: ">=3.35.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shadcn_theme:
+    path: ..

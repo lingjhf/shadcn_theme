@@ -1,3 +1,11 @@
+## 0.0.8
+
+- Added a runnable Flutter example app that switches shadcn color themes,
+  style presets, and brightness.
+- Expanded README usage documentation for `ThemeData` accessors, examples, and
+  token update docs.
+- Added documentation tests to keep the README and example app present.
+
 ## 0.0.7
 
 - Added the public `ShadcnColorTokens.semanticTokenNames` and
