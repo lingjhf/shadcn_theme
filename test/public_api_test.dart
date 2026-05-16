@@ -50,7 +50,11 @@ void main() {
     expect(library, contains("export 'src/shadcn_theme_data.dart';"));
     expect(apiContract, contains('theme-only Flutter package'));
     expect(apiContract, contains('ShadcnThemeData.resolve'));
+    expect(apiContract, contains('ShadcnThemeNames'));
+    expect(apiContract, contains('ShadcnColorTokens.tryGet'));
+    expect(apiContract, contains('font family context'));
     expect(apiContract, contains('ThemeData.shadcnTheme'));
+    expect(apiContract, contains('example/test'));
     expect(apiContract, contains('flutter pub publish --dry-run'));
   });
 }

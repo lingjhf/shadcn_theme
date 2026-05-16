@@ -1,3 +1,10 @@
+## 0.1.7
+
+- Updated README and API contract docs for name parsing, color lookup, padding
+  helpers, extension context, and example tests.
+- Updated token generation validation docs to include example analysis and
+  example widget tests.
+
 ## 0.1.6
 
 - Updated the example app to initialize themes from stable ids and reuse style

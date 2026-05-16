@@ -14,6 +14,7 @@ and state layers.
 - Light and dark `ThemeData` factories.
 - Complete token access for chart and sidebar colors.
 - `ThemeData` and `BuildContext` token accessors.
+- Stable string lookup helpers for theme ids, style ids, and color token names.
 - Example Flutter app under `example/`.
 - No runtime network requests and no npm dependency.
 
@@ -59,15 +60,18 @@ Read tokens from the active theme:
 final shadcn = context.shadcnTheme;
 final optional = Theme.of(context).maybeShadcnTheme;
 final chartColors = shadcn.colors.charts;
-final sidebarBackground = shadcn.colors.sidebar;
-final cardPadding = shadcn.style.cardPadding;
+final sidebarBackground = shadcn.colors.get('sidebar');
+final cardPadding = shadcn.style.cardPaddingInsets;
+final brightness = shadcn.brightness;
 ```
 
 Read tokens without a `BuildContext`:
 
 ```dart
-final tokens = ShadcnThemeName.blue.tokens.light;
-final styles = ShadcnStyleName.mira.tokens;
+final themeName = ShadcnThemeNames.parse('blue');
+final styleName = ShadcnStyleNames.parse('mira');
+final tokens = themeName.tokens.light;
+final styles = styleName.tokens;
 ```
 
 ## Example
@@ -77,6 +81,13 @@ Run the bundled example app:
 ```bash
 cd example
 flutter run
+```
+
+Run the example smoke test:
+
+```bash
+cd example
+flutter test
 ```
 
 The example switches color themes, style presets, and brightness while using the

@@ -42,10 +42,12 @@ of wrapping Material widgets.
 2. Keep accent themes pre-merged with `ShadcnThemes.defaultBaseTheme`.
 3. Preserve the 31-key semantic color contract unless upstream shadcn changes
    the token model.
-4. Run `dart format lib test`.
+4. Run `dart format lib test example/lib example/test`.
 5. Run `dart analyze`.
-6. Run `flutter test --test-randomize-ordering-seed=random`.
-7. Run `flutter pub publish --dry-run`.
+6. Run `dart analyze` in `example`.
+7. Run `flutter test --test-randomize-ordering-seed=random`.
+8. Run `flutter test --test-randomize-ordering-seed=random` in `example`.
+9. Run `flutter pub publish --dry-run`.
 
 Any upstream token change should include regression tests for representative
 light and dark values.
