@@ -94,6 +94,21 @@ void main() {
       expect(neutralA.toString(), contains('neutral'));
       expect(novaA.toString(), contains('nova'));
     });
+
+    test('style size helpers expose preset-specific control dimensions', () {
+      final mira = ShadcnStyleName.mira.tokens;
+      final maia = ShadcnStyleName.maia.tokens;
+      final sera = ShadcnStyleName.sera.tokens;
+
+      expect(mira.buttonHeightFor(ShadcnControlSize.xs), 20);
+      expect(mira.buttonHeightFor(ShadcnControlSize.md), 28);
+      expect(maia.buttonHeightFor(ShadcnControlSize.md), 36);
+      expect(maia.buttonHeightFor(ShadcnControlSize.lg), 40);
+      expect(sera.inputHeightFor(ShadcnControlSize.md), 40);
+      expect(sera.inputHeightFor(ShadcnControlSize.lg), 44);
+      expect(mira.iconButtonSizeFor(ShadcnControlSize.sm), 24);
+      expect(maia.iconButtonSizeFor(ShadcnControlSize.md), 36);
+    });
   });
 
   group('ThemeData generation', () {

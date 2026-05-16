@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'shadcn_names.dart';
 
+/// Standard control sizes used by shadcn style presets.
+enum ShadcnControlSize { xs, sm, md, lg }
+
 /// Non-color design tokens extracted from the official shadcn style presets.
 class ShadcnStyleTokens {
   const ShadcnStyleTokens({
@@ -115,6 +118,36 @@ class ShadcnStyleTokens {
       dialogRadius: scaled(dialogRadius),
       menuItemRadius: scaled(menuItemRadius),
     );
+  }
+
+  /// Button height for a standard shadcn control size.
+  double buttonHeightFor(ShadcnControlSize size) {
+    return switch (size) {
+      ShadcnControlSize.xs => buttonHeightXs,
+      ShadcnControlSize.sm => buttonHeightSm,
+      ShadcnControlSize.md => buttonHeight,
+      ShadcnControlSize.lg => buttonHeightLg,
+    };
+  }
+
+  /// Square icon button extent for a standard shadcn control size.
+  double iconButtonSizeFor(ShadcnControlSize size) {
+    return switch (size) {
+      ShadcnControlSize.xs => buttonHeightXs,
+      ShadcnControlSize.sm => buttonHeightSm,
+      ShadcnControlSize.md => iconButtonSize,
+      ShadcnControlSize.lg => buttonHeightLg,
+    };
+  }
+
+  /// Input height for a standard shadcn control size.
+  double inputHeightFor(ShadcnControlSize size) {
+    return switch (size) {
+      ShadcnControlSize.xs => inputHeightSm,
+      ShadcnControlSize.sm => inputHeightSm,
+      ShadcnControlSize.md => inputHeight,
+      ShadcnControlSize.lg => inputHeight + (buttonHeightLg - buttonHeight),
+    };
   }
 
   ShadcnStyleTokens copyWith({

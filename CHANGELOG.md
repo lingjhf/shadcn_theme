@@ -1,3 +1,9 @@
+## 0.0.4
+
+- Added `ShadcnControlSize` and style token helpers for button, icon button,
+  and input dimensions.
+- Added unit coverage for compact, rounded, and editorial style sizing.
+
 ## 0.0.3
 
 - Added source metadata and base/accent theme classification helpers.
