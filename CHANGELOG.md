@@ -1,3 +1,9 @@
+## 0.1.1
+
+- Added public `ShadcnThemeNames` and `ShadcnStyleNames` lookup helpers for
+  parsing stable theme and style ids from app configuration.
+- Added public API tests for successful and failed theme/style id parsing.
+
 ## 0.1.0
 
 - Documented the 0.1.x public API contract for production use.

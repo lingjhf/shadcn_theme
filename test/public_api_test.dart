@@ -27,6 +27,20 @@ void main() {
     expect(ShadcnStyles.all[ShadcnStyleName.vega]?.name, extension.style.name);
   });
 
+  test('public name helpers parse stable ids for app configuration', () {
+    expect(ShadcnThemeNames.tryParse('sky'), ShadcnThemeName.sky);
+    expect(ShadcnThemeNames.parse('zinc'), ShadcnThemeName.zinc);
+    expect(ShadcnThemeNames.tryParse('unknown'), isNull);
+    expect(() => ShadcnThemeNames.parse('unknown'), throwsArgumentError);
+
+    expect(ShadcnStyleNames.tryParse('nova'), ShadcnStyleName.nova);
+    expect(ShadcnStyleNames.parse('luma'), ShadcnStyleName.luma);
+    expect(ShadcnStyleNames.tryParse('unknown'), isNull);
+    expect(() => ShadcnStyleNames.parse('unknown'), throwsArgumentError);
+    expect(ShadcnThemeNames.byId.keys, containsAll(['neutral', 'yellow']));
+    expect(ShadcnStyleNames.byId.keys, containsAll(['vega', 'sera']));
+  });
+
   test('public docs define theme-only scope and validation contract', () {
     final apiContract = File('doc/api_contract.md').readAsStringSync();
     final library = File('lib/shadcn_theme.dart').readAsStringSync();

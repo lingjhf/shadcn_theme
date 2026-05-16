@@ -29,6 +29,48 @@ enum ShadcnThemeName {
 /// Official shadcn style presets supported by this package.
 enum ShadcnStyleName { vega, nova, maia, lyra, mira, luma, sera }
 
+/// Lookup helpers for public shadcn color theme names.
+abstract final class ShadcnThemeNames {
+  static final Map<String, ShadcnThemeName> byId = {
+    for (final theme in ShadcnThemeName.values) theme.id: theme,
+  };
+
+  /// Return the theme for [id], or null when the id is unknown.
+  static ShadcnThemeName? tryParse(String id) => byId[id];
+
+  /// Return the theme for [id].
+  ///
+  /// Throws [ArgumentError] when [id] is not a supported shadcn theme id.
+  static ShadcnThemeName parse(String id) {
+    final theme = tryParse(id);
+    if (theme == null) {
+      throw ArgumentError.value(id, 'id', 'Unsupported shadcn theme id');
+    }
+    return theme;
+  }
+}
+
+/// Lookup helpers for public shadcn style preset names.
+abstract final class ShadcnStyleNames {
+  static final Map<String, ShadcnStyleName> byId = {
+    for (final style in ShadcnStyleName.values) style.id: style,
+  };
+
+  /// Return the style preset for [id], or null when the id is unknown.
+  static ShadcnStyleName? tryParse(String id) => byId[id];
+
+  /// Return the style preset for [id].
+  ///
+  /// Throws [ArgumentError] when [id] is not a supported shadcn style id.
+  static ShadcnStyleName parse(String id) {
+    final style = tryParse(id);
+    if (style == null) {
+      throw ArgumentError.value(id, 'id', 'Unsupported shadcn style id');
+    }
+    return style;
+  }
+}
+
 extension ShadcnThemeNameInfo on ShadcnThemeName {
   static const Set<ShadcnThemeName> baseColorThemes = {
     ShadcnThemeName.neutral,
