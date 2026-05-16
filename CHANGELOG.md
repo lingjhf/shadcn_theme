@@ -1,3 +1,10 @@
+## 0.1.3
+
+- Added semantic `EdgeInsets` helpers for button, input, card, dialog, and
+  menu item padding on `ShadcnStyleTokens`.
+- Updated ThemeData mappings to reuse style padding helpers and added
+  regression tests for those derived spacing values.
+
 ## 0.1.2
 
 - Mapped shadcn tokens into additional Material themes for text selection,

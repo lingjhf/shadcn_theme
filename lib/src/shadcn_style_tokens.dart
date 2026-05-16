@@ -150,6 +150,29 @@ class ShadcnStyleTokens {
     };
   }
 
+  /// Horizontal padding used by button themes.
+  EdgeInsets get buttonPadding =>
+      EdgeInsets.symmetric(horizontal: buttonPaddingX);
+
+  /// Padding used by input decoration themes.
+  EdgeInsets get inputPadding =>
+      EdgeInsets.symmetric(horizontal: inputPaddingX, vertical: inputPaddingY);
+
+  /// Standard card padding.
+  EdgeInsets get cardPaddingInsets => EdgeInsets.all(cardPadding);
+
+  /// Compact card padding.
+  EdgeInsets get cardPaddingSmInsets => EdgeInsets.all(cardPaddingSm);
+
+  /// Standard dialog padding.
+  EdgeInsets get dialogPaddingInsets => EdgeInsets.all(dialogPadding);
+
+  /// Standard menu item padding.
+  EdgeInsets get menuItemPadding => EdgeInsets.symmetric(
+    horizontal: menuItemPaddingX,
+    vertical: menuItemPaddingY,
+  );
+
   ShadcnStyleTokens copyWith({
     double? buttonRadius,
     double? inputRadius,

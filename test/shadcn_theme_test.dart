@@ -124,6 +124,18 @@ void main() {
       expect(sera.inputHeightFor(ShadcnControlSize.lg), 44);
       expect(mira.iconButtonSizeFor(ShadcnControlSize.sm), 24);
       expect(maia.iconButtonSizeFor(ShadcnControlSize.md), 36);
+      expect(mira.buttonPadding, const EdgeInsets.symmetric(horizontal: 8));
+      expect(
+        maia.inputPadding,
+        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      );
+      expect(sera.cardPaddingInsets, const EdgeInsets.all(24));
+      expect(mira.cardPaddingSmInsets, const EdgeInsets.all(12));
+      expect(sera.dialogPaddingInsets, const EdgeInsets.all(24));
+      expect(
+        maia.menuItemPadding,
+        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      );
     });
   });
 
@@ -180,7 +192,15 @@ void main() {
 
       expect(_buttonHeight(mira), 28);
       expect(_buttonFixedHeight(mira), 28);
+      expect(
+        mira.filledButtonTheme.style!.padding!.resolve({}),
+        ShadcnStyleName.mira.tokens.buttonPadding,
+      );
       expect(mira.inputDecorationTheme.constraints?.minHeight, 28);
+      expect(
+        mira.inputDecorationTheme.contentPadding,
+        ShadcnStyleName.mira.tokens.inputPadding,
+      );
       expect(maia.inputDecorationTheme.constraints?.minHeight, 36);
       expect(sera.inputDecorationTheme.constraints?.minHeight, 40);
     });

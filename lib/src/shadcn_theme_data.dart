@@ -290,12 +290,7 @@ abstract final class ShadcnThemeData {
               ),
             ),
           ),
-          padding: WidgetStatePropertyAll(
-            EdgeInsets.symmetric(
-              horizontal: styleTokens.menuItemPaddingX / 2,
-              vertical: styleTokens.menuItemPaddingY / 2,
-            ),
-          ),
+          padding: WidgetStatePropertyAll(styleTokens.menuItemPadding / 2),
         ),
       ),
       listTileTheme: ListTileThemeData(
@@ -408,10 +403,7 @@ abstract final class ShadcnThemeData {
       labelStyle: TextStyle(color: colors.mutedForeground),
       floatingLabelStyle: TextStyle(color: colors.ring),
       errorStyle: TextStyle(color: colors.destructive),
-      contentPadding: EdgeInsets.symmetric(
-        horizontal: style.inputPaddingX,
-        vertical: style.inputPaddingY,
-      ),
+      contentPadding: style.inputPadding,
       constraints: BoxConstraints(minHeight: style.inputHeight),
       border: baseBorder,
       enabledBorder: baseBorder,
@@ -453,9 +445,7 @@ abstract final class ShadcnThemeData {
       minimumSize: WidgetStatePropertyAll(Size(0, style.buttonHeight)),
       fixedSize: WidgetStatePropertyAll(Size.fromHeight(style.buttonHeight)),
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      padding: WidgetStatePropertyAll(
-        EdgeInsets.symmetric(horizontal: style.buttonPaddingX),
-      ),
+      padding: WidgetStatePropertyAll(style.buttonPadding),
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(style.buttonRadius),
@@ -511,7 +501,7 @@ abstract final class ShadcnThemeData {
       disabledElevation: 0,
       iconSize: style.iconSize,
       extendedIconLabelSpacing: style.buttonGap,
-      extendedPadding: EdgeInsets.symmetric(horizontal: style.buttonPaddingX),
+      extendedPadding: style.buttonPadding,
       extendedTextStyle: textTheme.labelLarge,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(style.buttonRadius),
@@ -568,7 +558,7 @@ abstract final class ShadcnThemeData {
         borderRadius: BorderRadius.circular(style.menuItemRadius),
       ),
       behavior: SnackBarBehavior.floating,
-      insetPadding: EdgeInsets.all(style.cardPaddingSm),
+      insetPadding: style.cardPaddingSmInsets,
       showCloseIcon: true,
       closeIconColor: colors.background,
     );
