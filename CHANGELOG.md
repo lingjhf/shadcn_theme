@@ -1,3 +1,10 @@
+## 0.0.10
+
+- Added pub.dev topics for Flutter, theming, shadcn, Material, and design
+  system discovery.
+- Expanded package metadata tests to cover the current version and discoverable
+  topic metadata.
+
 ## 0.0.9
 
 - Hardened CI and publish workflows with formatting checks, whitespace checks,

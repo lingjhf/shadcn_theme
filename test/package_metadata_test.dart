@@ -16,7 +16,11 @@ void main() {
       pubspec,
       contains('issue_tracker: https://github.com/lingjhf/shadcn_theme/issues'),
     );
-    expect(pubspec, contains('version: 0.0.9'));
+    expect(pubspec, contains('version: 0.0.10'));
+    expect(pubspec, contains('topics:'));
+    expect(pubspec, contains('  - flutter'));
+    expect(pubspec, contains('  - shadcn'));
+    expect(pubspec, contains('  - design-system'));
   });
 
   test('github workflows validate and publish through pub.dev automation', () {
