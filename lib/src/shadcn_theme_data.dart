@@ -79,6 +79,8 @@ abstract final class ShadcnThemeData {
       colors: colors,
       style: styleTokens,
       radius: radiusScale,
+      brightness: brightness,
+      fontFamily: fontFamily,
     );
 
     return ThemeData(

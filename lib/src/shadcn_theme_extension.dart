@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'shadcn_style_tokens.dart';
 import 'shadcn_theme_tokens.dart';
 
+const Object _unset = Object();
+
 /// Theme extension that keeps the complete shadcn token set in [ThemeData].
 class ShadcnThemeExtension extends ThemeExtension<ShadcnThemeExtension> {
   const ShadcnThemeExtension({
@@ -10,6 +12,8 @@ class ShadcnThemeExtension extends ThemeExtension<ShadcnThemeExtension> {
     required this.colors,
     required this.style,
     required this.radius,
+    this.brightness = Brightness.light,
+    this.fontFamily,
   });
 
   /// Complete light/dark theme tokens.
@@ -24,18 +28,30 @@ class ShadcnThemeExtension extends ThemeExtension<ShadcnThemeExtension> {
   /// Active radius scale.
   final ShadcnRadiusScale radius;
 
+  /// Active theme brightness.
+  final Brightness brightness;
+
+  /// Optional font family override used to build the active [ThemeData].
+  final String? fontFamily;
+
   @override
   ShadcnThemeExtension copyWith({
     ShadcnThemeTokens? theme,
     ShadcnColorTokens? colors,
     ShadcnStyleTokens? style,
     ShadcnRadiusScale? radius,
+    Brightness? brightness,
+    Object? fontFamily = _unset,
   }) {
     return ShadcnThemeExtension(
       theme: theme ?? this.theme,
       colors: colors ?? this.colors,
       style: style ?? this.style,
       radius: radius ?? this.radius,
+      brightness: brightness ?? this.brightness,
+      fontFamily: identical(fontFamily, _unset)
+          ? this.fontFamily
+          : fontFamily as String?,
     );
   }
 
@@ -54,6 +70,8 @@ class ShadcnThemeExtension extends ThemeExtension<ShadcnThemeExtension> {
       radius: ShadcnRadiusScale(
         radius.base + (other.radius.base - radius.base) * t,
       ),
+      brightness: t < 0.5 ? brightness : other.brightness,
+      fontFamily: t < 0.5 ? fontFamily : other.fontFamily,
     );
   }
 
@@ -64,15 +82,19 @@ class ShadcnThemeExtension extends ThemeExtension<ShadcnThemeExtension> {
             theme == other.theme &&
             colors == other.colors &&
             style == other.style &&
-            radius == other.radius;
+            radius == other.radius &&
+            brightness == other.brightness &&
+            fontFamily == other.fontFamily;
   }
 
   @override
-  int get hashCode => Object.hash(theme, colors, style, radius);
+  int get hashCode =>
+      Object.hash(theme, colors, style, radius, brightness, fontFamily);
 
   @override
   String toString() {
-    return 'ShadcnThemeExtension(theme: ${theme.name}, style: ${style.name})';
+    return 'ShadcnThemeExtension(theme: ${theme.name}, '
+        'style: ${style.name}, brightness: $brightness)';
   }
 }
 

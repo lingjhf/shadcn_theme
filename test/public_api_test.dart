@@ -19,6 +19,8 @@ void main() {
     expect(extension.theme.name, ShadcnThemeName.sky);
     expect(extension.style.name, ShadcnStyleName.vega);
     expect(extension.radius.base, 12);
+    expect(extension.brightness, Brightness.dark);
+    expect(extension.fontFamily, 'Inter');
     expect(theme.textTheme.bodyMedium?.fontFamily, 'Inter');
     expect(
       ShadcnThemes.all,

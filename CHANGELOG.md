@@ -1,3 +1,10 @@
+## 0.1.5
+
+- Added active `brightness` and `fontFamily` context to
+  `ShadcnThemeExtension`.
+- Expanded extension tests for ThemeData construction, copyWith clearing, and
+  interpolation semantics.
+
 ## 0.1.4
 
 - Added `ShadcnColorTokens.tryGet` and `get` for safe lookup by semantic token

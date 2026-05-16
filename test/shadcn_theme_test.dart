@@ -354,6 +354,8 @@ void main() {
 
       expect(extension.theme.name, ShadcnThemeName.emerald);
       expect(extension.style.name, ShadcnStyleName.mira);
+      expect(extension.brightness, Brightness.dark);
+      expect(extension.fontFamily, isNull);
       expect(
         extension.colors.primary,
         ShadcnThemeName.emerald.tokens.dark.primary,
@@ -388,14 +390,23 @@ void main() {
         style: ShadcnStyleName.sera,
       ).shadcnTheme;
 
-      final copied = light.copyWith(style: ShadcnStyleName.sera.tokens);
+      final copied = light.copyWith(
+        style: ShadcnStyleName.sera.tokens,
+        brightness: Brightness.dark,
+        fontFamily: 'Inter',
+      );
+      final cleared = copied.copyWith(fontFamily: null);
       final mixed = light.lerp(dark, 0.5);
 
       expect(copied.theme, light.theme);
       expect(copied.colors, light.colors);
       expect(copied.style.name, ShadcnStyleName.sera);
+      expect(copied.brightness, Brightness.dark);
+      expect(copied.fontFamily, 'Inter');
+      expect(cleared.fontFamily, isNull);
       expect(mixed.theme.name, ShadcnThemeName.orange);
       expect(mixed.style.name, ShadcnStyleName.sera);
+      expect(mixed.brightness, Brightness.dark);
       expect(
         mixed.colors.primary,
         Color.lerp(light.colors.primary, dark.colors.primary, 0.5),
