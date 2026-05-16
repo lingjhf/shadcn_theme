@@ -228,6 +228,69 @@ class ShadcnStyleTokens {
       text: ShadcnTypographyTokens.lerp(a.text, b.text, t),
     );
   }
+
+  List<Object?> get _properties => [
+    name,
+    title,
+    description,
+    spacingUnit,
+    visualDensity,
+    borderWidth,
+    focusRingWidth,
+    focusRingOpacity,
+    stateLayerOpacity,
+    buttonHeightXs,
+    buttonHeightSm,
+    buttonHeight,
+    buttonHeightLg,
+    buttonPaddingX,
+    buttonGap,
+    buttonRadius,
+    buttonFontSize,
+    buttonFontWeight,
+    buttonLetterSpacing,
+    uppercaseButtons,
+    iconSize,
+    iconButtonSize,
+    inputHeight,
+    inputHeightSm,
+    inputPaddingX,
+    inputPaddingY,
+    inputRadius,
+    inputFontSize,
+    checkboxSize,
+    switchWidth,
+    switchHeight,
+    sliderThumbSize,
+    cardPadding,
+    cardPaddingSm,
+    cardGap,
+    cardRadius,
+    cardElevation,
+    dialogPadding,
+    dialogGap,
+    dialogRadius,
+    dialogElevation,
+    menuItemPaddingX,
+    menuItemPaddingY,
+    menuItemRadius,
+    text,
+  ];
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ShadcnStyleTokens &&
+            _listEquals(_properties, other._properties);
+  }
+
+  @override
+  int get hashCode => Object.hashAll(_properties);
+
+  @override
+  String toString() {
+    return 'ShadcnStyleTokens(name: $name, title: $title)';
+  }
 }
 
 /// Typography scale used by a shadcn style preset.
@@ -337,6 +400,37 @@ class ShadcnTypographyTokens {
       labelSmall: ShadcnTextStyleToken.lerp(a.labelSmall, b.labelSmall, t),
     );
   }
+
+  List<Object?> get _properties => [
+    displayLarge,
+    displayMedium,
+    displaySmall,
+    headlineLarge,
+    headlineMedium,
+    headlineSmall,
+    titleLarge,
+    titleMedium,
+    titleSmall,
+    bodyLarge,
+    bodyMedium,
+    bodySmall,
+    labelLarge,
+    labelMedium,
+    labelSmall,
+  ];
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ShadcnTypographyTokens &&
+            _listEquals(_properties, other._properties);
+  }
+
+  @override
+  int get hashCode => Object.hashAll(_properties);
+
+  @override
+  String toString() => 'ShadcnTypographyTokens()';
 }
 
 /// A single text style token.
@@ -376,6 +470,41 @@ class ShadcnTextStyleToken {
       letterSpacing: lerpDouble(a.letterSpacing, b.letterSpacing, t),
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ShadcnTextStyleToken &&
+            fontSize == other.fontSize &&
+            lineHeight == other.lineHeight &&
+            fontWeight == other.fontWeight &&
+            letterSpacing == other.letterSpacing;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(fontSize, lineHeight, fontWeight, letterSpacing);
+  }
+
+  @override
+  String toString() {
+    return 'ShadcnTextStyleToken(fontSize: $fontSize, lineHeight: $lineHeight)';
+  }
 }
 
 double lerpDouble(double a, double b, double t) => a + (b - a) * t;
+
+bool _listEquals(List<Object?> a, List<Object?> b) {
+  if (identical(a, b)) {
+    return true;
+  }
+  if (a.length != b.length) {
+    return false;
+  }
+  for (var i = 0; i < a.length; i += 1) {
+    if (a[i] != b[i]) {
+      return false;
+    }
+  }
+  return true;
+}

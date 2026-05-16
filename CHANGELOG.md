@@ -1,3 +1,10 @@
+## 0.0.2
+
+- Added value semantics and debug strings for theme, color, radius, style,
+  typography, and theme extension token classes.
+- Added unit coverage for registry lookups, token equality, hash stability, and
+  debug output.
+
 ## 0.0.1
 
 - Replaced the template package API with a theme-only shadcn Flutter API.

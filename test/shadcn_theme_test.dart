@@ -48,6 +48,24 @@ void main() {
         const Color(0xFFF0B100),
       );
     });
+
+    test('token classes have stable value semantics', () {
+      final neutralA = ShadcnThemeName.neutral.tokens;
+      final neutralB = ShadcnThemes.get(ShadcnThemeName.neutral);
+      final novaA = ShadcnStyleName.nova.tokens;
+      final novaB = ShadcnStyles.get(ShadcnStyleName.nova);
+
+      expect(neutralA, neutralB);
+      expect(neutralA.hashCode, neutralB.hashCode);
+      expect(neutralA.light, neutralB.light);
+      expect(neutralA.light.hashCode, neutralB.light.hashCode);
+      expect(neutralA.radiusScale(), const ShadcnRadiusScale(10));
+      expect(novaA, novaB);
+      expect(novaA.hashCode, novaB.hashCode);
+      expect(novaA.text.bodyMedium, novaB.text.bodyMedium);
+      expect(neutralA.toString(), contains('neutral'));
+      expect(novaA.toString(), contains('nova'));
+    });
   });
 
   group('ThemeData generation', () {

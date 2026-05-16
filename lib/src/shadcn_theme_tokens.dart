@@ -36,6 +36,25 @@ class ShadcnThemeTokens {
   ShadcnRadiusScale radiusScale([double? override]) {
     return ShadcnRadiusScale(override ?? radius);
   }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ShadcnThemeTokens &&
+            name == other.name &&
+            title == other.title &&
+            radius == other.radius &&
+            light == other.light &&
+            dark == other.dark;
+  }
+
+  @override
+  int get hashCode => Object.hash(name, title, radius, light, dark);
+
+  @override
+  String toString() {
+    return 'ShadcnThemeTokens(name: $name, title: $title)';
+  }
 }
 
 /// shadcn's semantic color token set for one brightness.
@@ -144,6 +163,55 @@ class ShadcnColorTokens {
     };
   }
 
+  List<Object?> get _properties => [
+    background,
+    foreground,
+    card,
+    cardForeground,
+    popover,
+    popoverForeground,
+    primary,
+    primaryForeground,
+    secondary,
+    secondaryForeground,
+    muted,
+    mutedForeground,
+    accent,
+    accentForeground,
+    destructive,
+    border,
+    input,
+    ring,
+    chart1,
+    chart2,
+    chart3,
+    chart4,
+    chart5,
+    sidebar,
+    sidebarForeground,
+    sidebarPrimary,
+    sidebarPrimaryForeground,
+    sidebarAccent,
+    sidebarAccentForeground,
+    sidebarBorder,
+    sidebarRing,
+  ];
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ShadcnColorTokens &&
+            _listEquals(_properties, other._properties);
+  }
+
+  @override
+  int get hashCode => Object.hashAll(_properties);
+
+  @override
+  String toString() {
+    return 'ShadcnColorTokens(primary: $primary, background: $background)';
+  }
+
   static ShadcnColorTokens lerp(
     ShadcnColorTokens a,
     ShadcnColorTokens b,
@@ -210,4 +278,31 @@ class ShadcnRadiusScale {
   double get x4l => base * 2.6;
 
   BorderRadius borderRadius(double value) => BorderRadius.circular(value);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ShadcnRadiusScale && base == other.base;
+  }
+
+  @override
+  int get hashCode => base.hashCode;
+
+  @override
+  String toString() => 'ShadcnRadiusScale(base: $base)';
+}
+
+bool _listEquals(List<Object?> a, List<Object?> b) {
+  if (identical(a, b)) {
+    return true;
+  }
+  if (a.length != b.length) {
+    return false;
+  }
+  for (var i = 0; i < a.length; i += 1) {
+    if (a[i] != b[i]) {
+      return false;
+    }
+  }
+  return true;
 }

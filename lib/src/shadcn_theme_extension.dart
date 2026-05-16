@@ -56,6 +56,24 @@ class ShadcnThemeExtension extends ThemeExtension<ShadcnThemeExtension> {
       ),
     );
   }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ShadcnThemeExtension &&
+            theme == other.theme &&
+            colors == other.colors &&
+            style == other.style &&
+            radius == other.radius;
+  }
+
+  @override
+  int get hashCode => Object.hash(theme, colors, style, radius);
+
+  @override
+  String toString() {
+    return 'ShadcnThemeExtension(theme: ${theme.name}, style: ${style.name})';
+  }
 }
 
 extension ShadcnThemeContext on BuildContext {
